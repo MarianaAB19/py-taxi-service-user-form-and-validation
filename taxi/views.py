@@ -62,6 +62,7 @@ class CarListView(LoginRequiredMixin, generic.ListView):
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
+    context_object_name = "car"
 
 
 class CarCreateView(LoginRequiredMixin, generic.CreateView):
@@ -78,6 +79,7 @@ class CarUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Car
+    context_object_name = "car"
     success_url = reverse_lazy("taxi:car-list")
 
 
@@ -100,6 +102,7 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
+    context_object_name = "driver"
     queryset = Driver.objects.all().prefetch_related("cars__manufacturer")
 
 
@@ -117,4 +120,5 @@ class DriverUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class DriverDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Driver
+    context_object_name = "driver"
     success_url = reverse_lazy("taxi:driver-list")

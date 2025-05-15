@@ -5,7 +5,7 @@
     {{ car.model }}
     <form action="{% url 'taxi:user-assign-delete' pk=car.id %}" method="post">
       {% csrf_token %}
-      {% if user not in car.drivers.all %}
+      {% if user not in car.drivers.all() %}
         <button class="btn btn-success link-to-page" type="submit">Assign me to this car</button>
       {% else %}
         <button class="btn btn-danger link-to-page" type="submit">Delete me from this car</button>
